@@ -12,7 +12,7 @@ repos = [
     // "ostreedev/ostree
 ]
 
-repos.each { repo ->
+node { repos.each { repo ->
     def (owner, name) = repo.split('/')
     jobDsl scriptText: """
         multibranchPipelineJob('${name}') {
@@ -71,4 +71,4 @@ repos.each { repo ->
             }
         }
     """
-}
+}}
