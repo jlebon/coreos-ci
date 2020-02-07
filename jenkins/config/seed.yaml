@@ -32,7 +32,11 @@ jobs:
                       definition {
                         cpsScm {
                           scm {
-                            git("^${url}", "^${ref}")
+                            git {
+                              remote { url("^${url}") }
+                              branches("^${ref}")
+                              extensions { }
+                            }
                             scriptPath("jobs/^${file.name}")
                           }
                         }

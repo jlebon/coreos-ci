@@ -16,13 +16,13 @@ node {
 repos.each { repo ->
     def (owner, name) = repo.split('/')
     jobDsl scriptText: """
-        multibranchPipelineJob(repo) {
+        multibranchPipelineJob('${repo}') {
             branchSources {
                 github {
                     // id must be constant so that job updates work correctly
                     id("fac233be-96f9-4331-851b-6153fdc9af9b")
-                    repoOwner(owner)
-                    repository(name)
+                    repoOwner('${owner}')
+                    repository('${name}')
                     checkoutCredentialsId("github-coreosbot-token")
                     scanCredentialsId("github-coreosbot-token")
                 }
@@ -43,7 +43,7 @@ repos.each { repo ->
             // things which don't seem to have a nice DSL :(
             configure {
                 it / sources / data / 'jenkins.branch.BranchSource' / strategy {
-                    properties(class: 'java.util.Arrays$ArrayList') {
+                    properties(class: 'java.util.Arrays\$ArrayList') {
                         a(class: 'jenkins.branch.BranchProperty-array') {
                             'org.jenkinsci.plugins.workflow.multibranch.DurabilityHintBranchProperty' {
                                 // we don't care about durability for these CI
@@ -65,7 +65,7 @@ repos.each { repo ->
                         'org.jenkinsci.plugins.github__branch__source.ForkPullRequestDiscoveryTrait' {
                             strategyId(1)
                             // allow testing of PRs from project contributors
-                            trust(class: 'org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustContributors')
+                            trust(class: 'org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait\$TrustContributors')
                         }
                     }
                 }
