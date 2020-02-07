@@ -12,11 +12,10 @@ repos = [
     // "ostreedev/ostree
 ]
 
-node {
 repos.each { repo ->
     def (owner, name) = repo.split('/')
     jobDsl scriptText: """
-        multibranchPipelineJob('${repo}') {
+        multibranchPipelineJob('${name}') {
             branchSources {
                 github {
                     // id must be constant so that job updates work correctly
@@ -72,5 +71,4 @@ repos.each { repo ->
             }
         }
     """
-}
 }
