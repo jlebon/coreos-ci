@@ -1,0 +1,9 @@
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+        - string:
+            scope: GLOBAL
+            id: github-coreosbot-token
+            secret: ${github-coreosbot-token/token}
+            description: GitHub coreosbot token

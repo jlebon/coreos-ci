@@ -17,13 +17,22 @@ in jlebon's "CoreOS CI" GitHub OAuth App settings, which he
 will soon transfer to the coreos/ org).
 
 ```
-oc secrets new github-oauth client-id=github-oauth-client-id client-secret=github-oauth-client-secret
+oc secret new github-oauth client-id=github-oauth-client-id client-secret=github-oauth-client-secret
 ```
 
-Create the GitHub webhook shared secret:
+Create the GitHub webhook shared secret (XXX: jlebon to put
+it in the shared secrets repo):
 
 ```
 oc secret new github-webhook-shared-secret secret=github-webhook-shared-secret
+```
+
+Create the CoreOS Bot (coreosbot) GitHub token (these creds
+are available from bgilbert; XXX: jlebon or bgilbert to put
+it in the shared secrets repo):
+
+```
+oc secret new github-coreosbot-token token=coreosbot-github-token
 ```
 
 Now we can set up the Jenkins S2I builds. We use the same
