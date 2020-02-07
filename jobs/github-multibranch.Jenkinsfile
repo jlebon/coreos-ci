@@ -12,6 +12,7 @@ repos = [
     // "ostreedev/ostree
 ]
 
+node {
 repos.each { repo ->
     def (owner, name) = repo.split('/')
     jobDsl scriptText: """
@@ -71,4 +72,5 @@ repos.each { repo ->
             }
         }
     """
+}
 }
