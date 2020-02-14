@@ -1,0 +1,10 @@
+unclassified:
+  globalLibraries:
+    - name: coreos
+      defaultVersion: pr/coreos-ci-rework
+      implicit: true
+      retriever:
+        modernSCM:
+          scm:
+            git:
+              remote: "https://github.com/jlebon/coreos-ci-lib.git"
