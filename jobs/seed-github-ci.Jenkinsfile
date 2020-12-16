@@ -40,7 +40,7 @@ node { repos.each { repo ->
             }
             factory {
                 workflowBranchProjectFactory {
-                    scriptPath('.cci.jenkinsfile')
+                    scriptPath('.bad.cci.jenkinsfile')
                 }
             }
             orphanedItemStrategy {
